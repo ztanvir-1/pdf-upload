@@ -75,7 +75,7 @@ export class PdfLogoUploaderComponent implements OnInit{
       partnerFontSize: ['', Validators.required],
       partnerFontFamily: ['', Validators.required],
       partnerFontStyle: ['', Validators.required],
-      partnerColor: ['#000000', Validators.required],
+      partnerColor: ['#ffffff', Validators.required],
 
       // accountName: ['', Validators.required],
       // accountFontSize: ['', Validators.required],
