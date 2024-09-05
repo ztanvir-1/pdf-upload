@@ -1,0 +1,275 @@
+.upload-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.resizable {
+  border: 1px solid #ccc;
+}
+
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing between sections */
+  max-width: 800px; /* Limit the maximum width of the form */
+  // margin: 0 auto; /* Center the form on the page */
+}
+
+.section {
+  margin-bottom: 24px; /* Spacing between sections */
+  padding: 16px; /* Add some padding for better visual separation */
+  background-color: #f9f9f9; /* Light background for sections */
+  border-radius: 8px; /* Rounded corners for sections */
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #3f51b5; /* Material primary color */
+}
+
+.upload-section,
+.form-field {
+  margin-bottom: 16px;
+}
+
+.upload-section label {
+  margin-right: 16px;
+  font-weight: 600;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 350px; /* Limit the maximum width of full-width fields */
+}
+
+.half-width {
+  width: 48%;
+  max-width: 160px; /* Limit the maximum width of half-width fields */
+}
+
+.font-style-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin: 16px 0;
+}
+
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+/* Overall form layout */
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #3f51b5; /* Material primary color */
+}
+
+/* Input fields and apply button container */
+.resize-inputs {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Space between inputs and button */
+}
+
+/* Half-width input fields */
+.half-width {
+  width: 150px; /* Adjust width for inputs */
+}
+
+/* Apply button style */
+.apply-button {
+  margin-top: 8px;
+}
+
+/* Image container for logo preview */
+.image-container {
+  position: relative;
+  margin: 24px 0; /* Space between inputs and image */
+  display: inline-block;
+}
+
+/* Handle for resizing */
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* Overall stepper container */
+mat-horizontal-stepper {
+  margin-bottom: 80px; /* Ensure space for the buttons at the bottom */
+}
+
+/* Button group for navigation buttons */
+.button-group {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  z-index: 1000; /* Ensure buttons are on top of other content */
+}
+
+/* Adjust margins for step content to avoid overlap with fixed buttons */
+.content-wrapper {
+  padding-bottom: 80px; /* Space at the bottom to avoid content being hidden behind buttons */
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #3f51b5; /* Material primary color */
+}
+
+/* Input fields and apply button container */
+.resize-inputs {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Space between inputs and button */
+}
+
+/* Half-width input fields */
+.half-width {
+  width: 150px; /* Adjust width for inputs */
+}
+
+/* Apply button style */
+.apply-button {
+  margin-top: 8px;
+}
+
+/* Image container for logo preview */
+.image-container {
+  position: relative;
+  margin: 24px 0; /* Space between inputs and image */
+  display: inline-block;
+}
+
+/* Handle for resizing */
+.resize-handle {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+
+/* Button group for placing buttons in a row */
+.button-group {
+  display: flex;
+  justify-content: flex-end; /* Align all buttons to the right */
+  gap: 16px; /* Space between buttons */
+  margin-top: 16px; /* Space above the buttons */
+}
+
+/* Specific styles for Material buttons */
+mat-button, mat-raised-button {
+  background-color: #3f51b5; /* Material Primary Color */
+  color: white; /* White text for contrast */
+}
+
+mat-button:hover, mat-raised-button:hover {
+  background-color: #303f9f; /* Darker shade on hover */
+}
+
+/* Ensure the Back button is positioned to the left of the Download button */
+.back-button {
+  margin-right: auto; /* Pushes the Back button to the left */
+}
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+
+  .color-preview-box {
+    width: 24px; /* Size of the color preview box */
+    height: 24px;
+    margin-left: 8px; /* Space between input and color box */
+    border: 1px solid #ccc; /* Optional: a border around the color box */
+  }
+}
