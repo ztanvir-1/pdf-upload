@@ -37,6 +37,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/jasmine": "~5.1.0",
     "@types/pdfjs-dist": "^2.10.377",
+    "angular-cli-ghpages": "^2.0.1",
     "file-saver": "^2.0.5",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
