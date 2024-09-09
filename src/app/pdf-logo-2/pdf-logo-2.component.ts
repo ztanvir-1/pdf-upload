@@ -5,7 +5,6 @@ import { jsPDF } from 'jspdf';
 import 'pdfjs-dist/build/pdf.worker.mjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { PDFDocument } from 'pdf-lib'; // Import pdf-lib
 
 @Component({
   selector: 'app-pdf-logo2',
@@ -24,7 +23,6 @@ export class PdfLogo2Component {
   selectedFontSize: number = 16; // Default font size
   scale = 1; // Scale for PDF rendering
   pageCount: number = 0; // Number of pages in PDF
-  uploadedPdfBytes: ArrayBuffer | null = null;
 
   ngOnInit() {
     // Initialize Fabric.js canvas
@@ -42,7 +40,6 @@ export class PdfLogo2Component {
       fileReader.onload = () => {
         const typedArray = new Uint8Array(fileReader.result as ArrayBuffer);
         this.loadPdf(typedArray);
-        this.uploadedPdfBytes = fileReader.result as ArrayBuffer; // Store the PDF bytes for later use
       };
       fileReader.readAsArrayBuffer(file);
     }
@@ -185,74 +182,31 @@ export class PdfLogo2Component {
   }
 
   // Export the modified PDF
-//   downloadModifiedPdf(): void {
-//   // Get the width and height of the Fabric.js canvas
-//   const canvasWidth = this.fabricCanvas!.getWidth();
-//   const canvasHeight = this.fabricCanvas!.getHeight();
+  downloadModifiedPdf(): void {
+  // Get the width and height of the Fabric.js canvas
+  const canvasWidth = this.fabricCanvas!.getWidth();
+  const canvasHeight = this.fabricCanvas!.getHeight();
 
-//   // Create a new PDF with the same dimensions as the Fabric.js canvas
-//   const pdf = new jsPDF({
-//     orientation: canvasWidth > canvasHeight ? 'landscape' : 'portrait', // Adjust orientation
-//     unit: 'px',
-//     format: [canvasWidth, canvasHeight], // Set format to match the canvas size
-//   });
+  // Create a new PDF with the same dimensions as the Fabric.js canvas
+  const pdf = new jsPDF({
+    orientation: canvasWidth > canvasHeight ? 'landscape' : 'portrait', // Adjust orientation
+    unit: 'px',
+    format: [canvasWidth, canvasHeight], // Set format to match the canvas size
+  });
 
-//   // Convert the Fabric.js canvas with PDF and added objects (logo, text) to an image
-//   const imgData = this.fabricCanvas!.toDataURL({
-//     format: 'png',
-//     multiplier: 1, // Keep the same resolution
-//   });
-
-//   // Add the image to the PDF at the original dimensions
-//   pdf.addImage(imgData, 'PNG', 0, 0, canvasWidth, canvasHeight);
-
-//   // Save the modified PDF
-//   pdf.save('modified.pdf');
-// }
-
-// Export the modified PDF with original vector content and overlays
-// Export the modified PDF while preserving vector content
-async downloadModifiedPdf(): Promise<void> {
-  if (!this.uploadedPdfBytes) {
-    console.error('No PDF uploaded.');
-    return;
-  }
-
-  // Load the original PDF using pdf-lib
-  const pdfDoc = await PDFDocument.load(this.uploadedPdfBytes);
-
-  // Get the pages of the uploaded PDF
-  const pages = pdfDoc.getPages();
-  const firstPage = pages[0];
-
-  // Export Fabric.js canvas as an image (for overlays like logos, text)
+  // Convert the Fabric.js canvas with PDF and added objects (logo, text) to an image
   const imgData = this.fabricCanvas!.toDataURL({
     format: 'png',
-    multiplier: 1,
+    multiplier: 1, // Keep the same resolution
   });
 
-  // Embed the Fabric.js overlay as a PNG image in the PDF
-  const pngImage = await pdfDoc.embedPng(imgData);
-
-  // Get the dimensions of the first page
-  const { width, height } = firstPage.getSize();
-
-  // Overlay the Fabric.js content onto the first page
-  firstPage.drawImage(pngImage, {
-    x: 0,
-    y: 0,
-    width: width,
-    height: height,
-  });
+  // Add the image to the PDF at the original dimensions
+  pdf.addImage(imgData, 'PNG', 0, 0, canvasWidth, canvasHeight);
 
   // Save the modified PDF
-  const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'modified.pdf';
-  link.click();
+  pdf.save('modified.pdf');
 }
+
 
 
   // Check if the PDF is loaded
