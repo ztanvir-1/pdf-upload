@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@types/qrcode": "^1.5.5",
+    "fabric": "^6.4.1",
+    "jspdf": "^2.5.1",
     "parsr": "^0.0.1",
     "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.4",

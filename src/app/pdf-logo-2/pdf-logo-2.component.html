@@ -1,0 +1,37 @@
+<div class="container">
+  <!-- PDF Upload -->
+  <div>
+    <input type="file" (change)="onPdfUpload($event)" accept="application/pdf" />
+  </div>
+
+  <!-- Dropdown for Logo or Text -->
+  <div>
+    <label for="optionSelect">Choose an option:</label>
+    <select id="optionSelect" [(ngModel)]="selectedOption">
+      <option value="">-- Select --</option>
+      <option value="logo">Logo</option>
+      <option value="text">Text</option>
+    </select>
+  </div>
+
+  <!-- Logo Upload -->
+  <div *ngIf="selectedOption === 'logo'">
+    <input type="file" (change)="onLogoUpload($event)" accept="image/*" />
+  </div>
+
+  <!-- Text Input -->
+  <div *ngIf="selectedOption === 'text'">
+    <input type="text" [(ngModel)]="inputText" placeholder="Enter your text" />
+    <label for="fontSize">Font Size:</label>
+    <input id="fontSize" type="number" [(ngModel)]="selectedFontSize" />
+    <button (click)="addText()">Add Text</button>
+  </div>
+
+  <!-- Fabric.js Canvas -->
+  <div id="pdfContainer">
+    <canvas id="fabricCanvas"></canvas>
+  </div>
+
+  <!-- Export Button -->
+  <button (click)="downloadModifiedPdf()">Export PDF</button>
+</div>
